@@ -29,6 +29,18 @@
 | 2  | پیاده‌سازی یک ساختار انعطاف‌پذیرتر برای مدیریت انواع مختلف سفارش بدون اصلاح کد موجود | 	اصلاح و تغییر مستقیم کلاس Main | Open-Close Principle (OCP) |
 | 3  | ایجاد Dependency یا استفاده از factory patterns  | وجود coupling برای برخی سرویس‌ها در کلاس Main | Dependency Inversion Principle |
 
+شرح تغییرات ایجاد شده در کد:
+در این گام با توجه به راه‌حل‌هایی که در بخش قبل اشاره شد، کد را برای هر یک از اصول SOLID اصلاح می‌کنیم.
+Single Responsibility Principle:
+کلاس Main را به کلاس‌های مجزای UserInputManager، OrderManager و PaymentMethodManager تقسیم می‌کنیم تا وظایف مربوط به مدیریت ورود کاربر، مدیریت سفارشات و مدیریت نحوه پرداخت در این کلاس‌ها بررسی شوند.
+Open-Closed Principle:
+از الگوی Strategy برای مدیریت انتخاب روش پرداخت بدون نیاز به ایجاد تغییر مستقیم در کلاس Main استفاده می‌کنیم.
+Liskov Substitution Principle:
+OrderService را به چند اینترفیس کوچکتر با نام‌های OrderRegistration (برای ثبت سفارش)، OrderPayment (برای پرداخت سفارش) تقسیم کرده و سپس آن ها را در PhoneOrderService پیاده‌سازی میکنیم.
+Dependency Inversion Principle:
+از روش ایجاد dependency به اینترفیسها استفاده میکنیم تا ناچار نشویم dependency به سایر بخشهای کد داشته باشیم و درصورت ایجاد هرگونه تغییرات، به مشکل بخوریم.
+
+
 --------------------------------------
 گام 4:
 
